@@ -1,0 +1,12 @@
+Build image:
+  image: docker
+  script:
+    - echo $DOCKER_HUB_TOKEN | docker login -u $DOCKER_HUB_USERNAME --password-stdin
+    - docker build -t $DOCKER_HUB_USERNAME/memes-r-us:$CI_COMMIT_REF_NAME .
+    - docker push $DOCKER_HUB_USERNAME/memes-r-us:$CI_COMMIT_REF_NAME
+    - |
+        if [ $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH ]; then
+        docker tag $DOCKER_HUB_USERNAME/memes-r-us:$CI_COMMIT_REF_NAME $DOCKER_HUB_USERNAME/memes-r-us:latest
+        docker push $DOCKER_HUB_USERNAME/memes-r-us:latest
+        fi
+
