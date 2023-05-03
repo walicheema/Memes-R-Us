@@ -1,0 +1,14 @@
+<html>
+<head>
+  <title> Memes-R-Us! </title>
+  <img id = "logo" src="https://cs2304-s23.mikesir87.training/assets/img/logo.png" />
+</head>
+<body style="background-color:aquamarine;">
+  <h1 id="message">Welcome to Memes-R-Us! We have memes for all!</h1>
+  <img src="{{ memeUrl }}" />
+  <form method="post" action="/add-meme">
+    <input type="text" placeholder="New meme URL (https://media.giphy.com/media/...)" name="memeUrl" required />
+    <input type="submit" value="Add URL" /> 
+  </form>
+</body>
+</html>
